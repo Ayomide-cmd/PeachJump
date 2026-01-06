@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #FFDAB9;
+    font-family: 'Arial Black', sans-serif;
+}
+#ui {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #FF85A1;
+    font-size: 2rem;
+    z-index: 10;
+}
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #FF4500;
+    z-index: 20;
+}
+#game-over.hidden { display: none; }
+canvas { display: block; }
+button {
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    background: #FF85A1;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+}
