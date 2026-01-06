@@ -20,22 +20,64 @@ export class Game {
     }
 
     init() {
-        window.addEventListener('keydown', (e) => {
-            if (e.code === 'Space') this.player.jump();
+        
+        const handleJump = (e) => {
+            
+            if (e && e.type === 'keydown') {
+                const jumpKeys = ['Space', 'ArrowUp', 'KeyW'];
+                if (!jumpKeys.includes(e.code)) return;
+                e.preventDefault(); 
+            }
+            
+            this.player.jump();
+        };
+    
+        
+        window.addEventListener('keydown', handleJump);
+    
+    
+        window.addEventListener('mousedown', (e) => {
+            
+            if (e.button === 0) handleJump();
         });
+    
+        
+        window.addEventListener('touchstart', (e) => {          
+            if (e.cancelable) e.preventDefault(); 
+            handleJump();
+        }, { passive: false });
+    
+        window.addEventListener('resize', () => this.handleResize());
+    
         this.loop();
     }
-
+    
+    handleResize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.background.width = this.canvas.width;
+        this.background.height = this.canvas.height;
+        this.player.groundY = this.canvas.height - 90;
+        if(!this.player.isJumping) this.player.y = this.player.groundY;
+    }
+        
     spawnObstacle() {
         this.spawnTimer++;
-        if (this.spawnTimer > Math.max(60, 120 - this.score / 10)) {
+        const spawnRate = Math.max(50, 100 - this.score / 20);
+        if (this.spawnTimer > spawnRate) {
             this.obstacles.push(new Obstacle(this.ctx, this.canvas.width, this.canvas.height, this.gameSpeed));
             this.spawnTimer = 0;
         }
     }
 
     checkCollision(p, o) {
-        return (p.x < o.x + o.w && p.x + p.w > o.x && p.y < o.y + o.h && p.y + p.h > o.y);
+        const padding = 8;
+        return (
+            p.x + padding < o.x + o.w &&
+            p.x + p.w - padding > o.x &&
+            p.y + padding < o.y + o.h &&
+            p.y + p.h - padding > o.y
+        );
     }
 
     loop() {
@@ -71,9 +113,17 @@ export class Game {
     gameOver() {
         this.isGameOver = true;
         this.player.explode();
-        gsap.to(this.canvas, { x: 20, repeat: 5, yoyo: true, duration: 0.05, onComplete: () => {
-            gsap.set(this.canvas, { x: 0 });
-            document.getElementById('game-over').classList.remove('hidden');
-        }});
+        
+        
+        gsap.to(this.canvas, { 
+            x: 10, 
+            repeat: 5, 
+            yoyo: true, 
+            duration: 0.05, 
+            onComplete: () => {
+                gsap.set(this.canvas, { x: 0 });
+                document.getElementById('game-over').classList.remove('hidden');
+            }
+        });
     }
 }
