@@ -34,11 +34,13 @@ export class Game {
     init() {
         this.isPaused = false;
 
-        // 3. RESET using the standard key
-        document.getElementById('reset-btn').addEventListener('click', () => {
-            localStorage.removeItem(this.storageKey);
-            location.reload();
-        });
+        const resetLink = document.getElementById('reset-link');
+        if (resetLink) {
+            resetLink.addEventListener('click', () => {
+                localStorage.removeItem(this.storageKey);
+                location.reload();
+            });
+        }
 
         const triggerJump = (e) => {
             if (e && e.type === 'keydown') {
@@ -128,7 +130,6 @@ export class Game {
         let newBest = false;
         if (this.score > this.highScore) {
             this.highScore = this.score;
-            // 4. SAVE using the standard key
             localStorage.setItem(this.storageKey, this.highScore);
             newBest = true;
         }

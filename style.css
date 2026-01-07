@@ -8,7 +8,6 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
-
 #ui {
     position: absolute;
     top: 20px;
@@ -16,115 +15,102 @@ body {
     z-index: 10;
     pointer-events: none;
 }
+
 #score {
     color: #FF85A1;
     font-size: 2.5rem;
     font-weight: 900;
     margin: 0;
 }
+
 #high-score {
     color: rgba(255, 133, 161, 0.7);
     font-size: 1.2rem;
     margin: 0;
 }
 
-
-/* Replace your existing loading-screen styles with this */
 #loading-screen {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #FFDAB9; 
+    inset: 0;
+    background: radial-gradient(circle, #FFDAB9 0%, #FFCCBB 100%); 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
-    color: #FF85A1;
-    text-align: center;
+    z-index: 1000;
 }
 
 .loading-content h1 {
-    font-size: 4rem;
+    font-size: clamp(3rem, 12vw, 5rem);
+    color: #FF85A1;
+    text-transform: uppercase;
+    letter-spacing: -4px;
     margin: 0;
-    text-shadow: none; 
-    letter-spacing: -2px; 
-}
-
-.loading-content p {
-    font-size: 1rem;
-    font-weight: bold;
-    letter-spacing: 4px;
-    margin-top: 5px;
-    color: #FFB347; 
-
+    filter: drop-shadow(0 10px 15px rgba(255, 133, 161, 0.3));
 }
 
 .progress-container {
-    width: 280px;
-    height: 16px; 
-    background: white;
-    border: 4px solid #FF85A1; 
-    border-radius: 20px;
-    margin: 30px auto 0;
-    padding: 2px;
+    width: 200px;
+    height: 4px; 
+    background: rgba(255, 133, 161, 0.15); 
+    border-radius: 0; 
+    margin: 40px auto 0;
     overflow: hidden;
+    position: relative;
 }
 
 #progress-bar {
     width: 0%;
     height: 100%;
-    background: #FF85A1;
-    border-radius: 10px;
-    box-shadow: none; 
-}
-.progress-container {
-    width: 250px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 10px;
-    margin: 25px auto 0;
-    overflow: hidden;
-}
-#progress-bar {
-    width: 0%;
-    height: 100%;
-    background: #FF85A1;
-    box-shadow: 0 0 10px #FF85A1;
+    background: #FF85A1; /* Solid Pink */
+    box-shadow: none; /* Removed the glow */
 }
 
-/* Game Over Screen */
 #game-over {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
     border-radius: 20px;
     border: 5px solid #FF85A1;
-    z-index: 20;
+    z-index: 200;
     min-width: 280px;
+    box-sizing: border-box;
 }
+
 #game-over.hidden { display: none; }
-#game-over h1 { color: #FF4500; font-size: 3rem; margin: 0; }
-#game-over p { font-size: 1.5rem; margin: 10px 0; color: #555; }
-#best-score { font-weight: bold; }
+
+#game-over h1 { color: #FF4500; font-size: 2.5rem; margin: 0; }
 
 button {
     margin-top: 20px;
-    padding: 15px 30px;
-    font-size: 1.5rem;
+    padding: 15px 40px;
+    font-size: 1.2rem;
     background: #FF85A1;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 50px;
     font-family: 'Arial Black', sans-serif;
-    transition: transform 0.2s;
 }
-button:active { transform: scale(0.9); }
 
-canvas { display: block; }
+#reset-link {
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    margin-top: 20px;
+    color: #555;
+    text-decoration: underline;
+}
+
+#gameCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: block;
+}
