@@ -3,52 +3,128 @@ body {
     overflow: hidden;
     background: #FFDAB9;
     font-family: 'Arial Black', sans-serif;
+    touch-action: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
+
+
 #ui {
     position: absolute;
     top: 20px;
     left: 20px;
-    color: #FF85A1;
-    font-size: 2rem;
     z-index: 10;
+    pointer-events: none;
 }
+#score {
+    color: #FF85A1;
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin: 0;
+}
+#high-score {
+    color: rgba(255, 133, 161, 0.7);
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+
+/* Replace your existing loading-screen styles with this */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFDAB9; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: #FF85A1;
+    text-align: center;
+}
+
+.loading-content h1 {
+    font-size: 4rem;
+    margin: 0;
+    text-shadow: none; 
+    letter-spacing: -2px; 
+}
+
+.loading-content p {
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-top: 5px;
+    color: #FFB347; 
+
+}
+
+.progress-container {
+    width: 280px;
+    height: 16px; 
+    background: white;
+    border: 4px solid #FF85A1; 
+    border-radius: 20px;
+    margin: 30px auto 0;
+    padding: 2px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #FF85A1;
+    border-radius: 10px;
+    box-shadow: none; 
+}
+.progress-container {
+    width: 250px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    margin: 25px auto 0;
+    overflow: hidden;
+}
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #FF85A1;
+    box-shadow: 0 0 10px #FF85A1;
+}
+
+/* Game Over Screen */
 #game-over {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: #FF4500;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    border: 5px solid #FF85A1;
     z-index: 20;
+    min-width: 280px;
 }
 #game-over.hidden { display: none; }
-canvas { display: block; }
+#game-over h1 { color: #FF4500; font-size: 3rem; margin: 0; }
+#game-over p { font-size: 1.5rem; margin: 10px 0; color: #555; }
+#best-score { font-weight: bold; }
+
 button {
-    padding: 10px 20px;
+    margin-top: 20px;
+    padding: 15px 30px;
     font-size: 1.5rem;
     background: #FF85A1;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 50px;
+    font-family: 'Arial Black', sans-serif;
+    transition: transform 0.2s;
 }
+button:active { transform: scale(0.9); }
 
-html, body {
-    overscroll-behavior: none;
-    overflow: hidden;
-    touch-action: none; 
-    width: 100%;
-    height: 100%;
-}
-
-canvas {
-    display: block;
-    width: 100vw;
-    height: 100vh;
-}
-
-canvas {
-    touch-action: none; 
-    user-select: none;  
-    -webkit-tap-highlight-color: transparent; 
-}
+canvas { display: block; }

@@ -2,20 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Peach Jump</title>
     <link rel="stylesheet" href="./style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 </head>
 <body>
+    <div id="loading-screen">
+        <div class="loading-content">
+            <h1>Peach Jump</h1>
+            <div class="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
     <div id="ui">
         <div id="score">0m</div>
+        <div id="high-score">Best: 0m</div>
     </div>
+
     <div id="game-over" class="hidden">
         <h1>Eiyaa!</h1>
+        <p id="final-score">Distance: 0m</p>
+        <p id="best-score">Best: 0m</p>
         <button id="restart">REPLAY</button>
     </div>
+
     <canvas id="gameCanvas"></canvas>
+    
     <script type="module" src="/main.js"></script>
+
+    <p id="reset-btn" style="font-size: 0.8rem; cursor: pointer; opacity: 0.5; margin-top: 20px;">Clear My Record</p>
 </body>
 </html>
