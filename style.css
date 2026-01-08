@@ -29,40 +29,47 @@ body {
     margin: 0;
 }
 
+
 #loading-screen {
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle, #FFDAB9 0%, #FFCCBB 100%); 
+    background: #FFDAB9; 
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
-.loading-content h1 {
-    font-size: clamp(3rem, 12vw, 5rem);
-    color: #FF85A1;
-    text-transform: uppercase;
-    letter-spacing: -4px;
-    margin: 0;
-    filter: drop-shadow(0 10px 15px rgba(255, 133, 161, 0.3));
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
 }
+
+.loading-content h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    color: #FF85A1; 
+    font-family: 'Arial Black', sans-serif; 
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin: 0 0 20px 0; 
+    text-transform: uppercase;
+}
+
 
 .progress-container {
     width: 200px;
-    height: 4px; 
-    background: rgba(255, 133, 161, 0.15); 
-    border-radius: 0; 
-    margin: 40px auto 0;
+    height: 2px; 
+    background: rgba(255, 133, 161, 0.2);
+    border-radius: 0;
     overflow: hidden;
-    position: relative;
 }
 
 #progress-bar {
     width: 0%;
     height: 100%;
-    background: #FF85A1; /* Solid Pink */
-    box-shadow: none; /* Removed the glow */
+    background: #FF85A1; 
 }
 
 #game-over {
