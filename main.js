@@ -50,9 +50,17 @@ if (restartBtn) {
 }
 
 const resetBtn = document.getElementById('reset-link');
+
 if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
+    const handleReset = (e) => {
+        e.preventDefault(); 
         localStorage.removeItem('peachJumpHighScore_v1');
         location.reload();
-    });
+    };
+
+    
+    resetBtn.addEventListener('click', handleReset);
+    
+    
+    resetBtn.addEventListener('touchend', handleReset);
 }
