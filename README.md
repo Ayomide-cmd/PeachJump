@@ -1,4 +1,4 @@
- Peach Jump is  a simple, fast paced jumping game where the player controls a character and jumps across platforms to survive and score points. The goal is to stay alive as long as possible while avoiding obstacles and falling
+Peach Jump is  a simple, fast paced jumping game where the player controls a character and jumps across platforms to survive and score points. The goal is to stay alive as long as possible while avoiding obstacles and falling
 
 Gameplay Overview
 	•	Jump between platforms
